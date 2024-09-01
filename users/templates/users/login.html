@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register a New User
+{% endblock %}
+
+{% block content %}
+<div class="login-form-container">
+        <!-- Message display section -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <h1 class="login-header">Login</h1>
+
+    <form class="form-with-validation" action="/users/login/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}" />
+        {% endif %}
+        <button class="form-submit">Login</button>
+    </form>
+    <br>
+    <p>Don't have an account? <a href="{% url 'users:register' %}">Register here</a>.</p>
+</div>
+{% endblock %}

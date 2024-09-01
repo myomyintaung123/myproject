@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Posts
+{% endblock %}
+
+{% block content %}
+    <section>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        <h1>Posts</h1>
+        {% for post in posts %}
+            <article class="post">
+            
+                {% comment %} profile and author name {% endcomment %}
+                <div class="post-author">
+                    <a href="{% url 'users:profile' username=post.author.username %}" class="author-link">
+                        {% if post.author.profile.image %}
+                            <img class="author-profile-image" src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}'s profile picture"/>
+                        {% endif %}
+                        <p class="author-name">{{ post.author }}</p>
+                    </a>
+                </div>
+
+                <img class="images" src="{{ post.image.url }}" alt="{{ post.title}}"/> 
+                <h2>
+                    <a href="{% url 'posts:page' slug=post.slug %}">
+                        {{ post.title }}
+                    </a>
+                </h2> 
+                <p>{{ post.body|truncatewords:50 }}</p>
+                <p class="date">{{ post.date }} By {{ post.author }}</p>
+            </article>
+             <!-- Like form in a separate div -->
+                <div class="like-container">
+                    <form action="{% url 'posts:like_post' %}" method="post" class="like-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                        <button type="submit" class="like-button">
+                            {% if user in post.likes.all %}
+                                👍
+                            {% else %}
+                                👎
+                            {% endif %}
+                        </button>
+                        <span id="likes-count-{{ post.id }}" class="likes-count">{{ post.likes.count }}</span>
+                    </form>
+                </div>
+
+        {% endfor %}
+        <br>
+        <br>
+    </section>
+{% endblock %}

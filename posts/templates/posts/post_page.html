@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <section class="post-page">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+        <div class="post-author">
+            <a href="{% url 'users:profile' username=post.author.username %}" class="author-link">
+                {% if post.author.profile.image %}
+                    <img class="author-profile-image" src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}'s profile picture"/>
+                {% endif %}
+                <p class="author-name">Author: {{ post.author }}</p>
+            </a>
+        </div>
+
+        <img class="image" src="{{ post.image.url }}" alt="{{ post.title}}"/>
+        <h1 class="title">{{ post.title }}</h1>
+        <p>{{ post.body }}</p>
+        <br>
+        <p>{{ post.date }}</p>
+        <br>
+
+
+        {% comment %} <div class="like-btn">
+            <span 
+                id="like-emoji" 
+                data-url="{% url 'posts:like_post' post.id %}" 
+                class="{% if user in post.likes.all %}like-emoji{% else %}unlike-emoji{% endif %}" 
+                title="{% if user in post.likes.all %}Unlike{% else %}Like{% endif %}">
+                {% if user in post.likes.all %}👍{% else %}👎{% endif %}
+            </span>
+            <span id="likes-count">{{ post.total_likes }}</span>
+        </div> {% endcomment %}
+
+        
+        <form action="{% url 'posts:like_post' %}" method="post" class="like-form">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <button type="submit" class="like-button">
+                {% if user in post.likes.all %}
+                    👍
+                {% else %}
+                    👎
+                {% endif %}
+            </button>
+            <span id="likes-count" class="likes-count">{{ post.likes.count }}</span>
+        </form>
+
+
+
+
+        {% if user == post.author %}
+            <a href="{% url 'posts:edit_post' pk=post.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'posts:delete_post' pk=post.pk %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+    </section>
+
+
+
+
+
+{% comment %} <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const likeEmoji = document.getElementById('like-emoji');
+    
+    likeEmoji.addEventListener('click', function() {
+        const url = likeEmoji.getAttribute('data-url');
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.liked) {
+                likeEmoji.textContent = '👍';
+                likeEmoji.classList.remove('unlike-emoji');
+                likeEmoji.classList.add('like-emoji');
+                document.getElementById('likes-count').textContent = data.total_likes;
+                likeEmoji.title = 'Unlike';
+            } else {
+                likeEmoji.textContent = '👎';
+                likeEmoji.classList.remove('like-emoji');
+                likeEmoji.classList.add('unlike-emoji');
+                document.getElementById('likes-count').textContent = data.total_likes;
+                likeEmoji.title = 'Like';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+</script> {% endcomment %}
+
+{% endblock %}

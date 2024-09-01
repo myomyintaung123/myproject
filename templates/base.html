@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block  title %}
+            My App
+        {% endblock %}
+    </title>
+   {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> {% endcomment %}
+
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="nav-icon">
+                <a href="/"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+            </div>
+            <h2 class="logo-text">Logo</h2>
+        </div>
+        <nav class="navigation">
+            <a href="/">
+                <span class="emoji" role="img" aria-label="Home" title="Home">🏠</span></a>
+            <a href="{% url 'posts:new-post' %}">
+                <span class="emoji" role="img" aria-label="New Post" title="New Post">🆕</span></a>
+            <a href="/about">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="{% url 'posts:list' %}">Posts</a>
+
+            {% if user.is_authenticated %}
+                 <a href="{% url 'users:profile' username=request.user.username %}">Profile</a>
+                <form class="user-logout" action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="emoji" title="User Logout">🔓</button>
+                </form>
+            {% else %}
+            <!-- <a href="/users/register">Register</a> -->
+            <a href="{% url 'users:login' %}"><span class="emoji" role="img" aria-label="User Login" title="User Login">🔒</span></a>
+
+            {% endif %}
+            <!-- <button class="btnLogin-pupup">Login</button> -->
+        </nav>
+    </header>
+
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

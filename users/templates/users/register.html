@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register a New User
+{% endblock %}
+
+{% block content %}
+<div class="register-form-container">
+    <!-- Message display section -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h1 class="register-header">Register a New User</h1>
+    
+    <form class="form-with-validation" action="/users/register/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="form-submit">Submit</button>
+    </form>
+    <br>
+    <p>Already have an account? <a href="{% url 'users:login' %}">Login here</a>.</p>
+</div>
+{% endblock %}

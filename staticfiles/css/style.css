@@ -1,0 +1,736 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppings', sans-serif;
+    /* font-family: Arial, sans-serif; */
+    
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #4ac3ec;
+    /* background: url(../images/bg1.jpeg); */
+    background-size: cover;
+    background-position: center;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    color: white;
+    font-size: 24px; /* Adjust as needed */
+    margin: 0; /* Remove default margin */
+}
+
+
+.emoji {
+    font-size: 1.5rem; /* Adjust this value to change the size of the icon */
+    padding: 0.5rem; /* Optional: Add padding around the icon */
+    display: inline-block;
+    vertical-align: middle; /* Aligns the icon vertically if needed */
+}
+
+
+
+
+.nav-icon img {
+    height: 45px; /* Adjust the height as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between image and text */
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    /* background: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+/* 
+.logo{
+    font-size: 2em;
+    color: white;
+    user-select: none;
+} */
+
+.navigation a{
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 60px;
+}
+
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: white;
+    transform-origin: right;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navigation .btnLogin-pupup{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnLogin-pupup:hover{
+    background: white;
+    color: rgb(44, 69, 69);
+}
+
+
+
+
+
+
+/* 
+.header {
+    width: 100%;
+    background-image: url(../images/bg-1.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+}  */
+
+
+
+
+
+
+ 
+
+/* post css */
+/* Section Heading */
+section h1 {
+    font-size: 50px;
+    color: white;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Individual Post Styles */
+.post {
+    background-color: #6a99c8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px; /* Adds space at the top of each post */
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.post:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.post p {
+    margin: 0 0 10px;
+    color: black;
+}
+
+.post p.date {
+    font-size: 14px;
+    color: rgb(5, 2, 2);
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+
+
+/* post-page */
+
+.post-page {
+    color: whitesmoke;
+    text-align: left;
+    line-height: 1.5;
+    padding: 15px;
+    margin: 20px auto;
+    margin-top: 200px;
+    margin-bottom: 80px;
+    border-radius: 8px;
+    max-width: 80%;
+    /* box-shadow: 0 0 25px rgba(0, 0, 0, 0.5); */
+}
+
+.title {
+    font-size: 2em;          /* Adjust the font size */
+    color: white;             /* Change the text color */
+    margin-bottom: 20px;     /* Add some space below the title */           /* Add padding around the text */
+    text-align: center;      /* Center align the text */
+    font-family: Arial, sans-serif; /* Change the font family */
+    text-transform: uppercase; /* Make the text uppercase */
+    border-radius: 5px;      /* Round the corners */
+  }
+
+
+/* posts-list */
+  .images {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+  }
+
+
+/* post-page */
+  .image {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+  }
+
+
+
+
+
+/* register css */
+
+.register-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    background-color: #3fb2d8;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+  }
+
+/* General form styles */
+.register-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.register-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 35px;
+}
+
+.form-with-validation {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-with-validation input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
+.form-with-validation button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.form-submit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-submit:hover {
+    background-color: #45a049;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .register-form {
+        padding: 15px;
+    }
+
+    .form-with-validation input,
+    .form-with-validation button {
+        padding: 8px;
+    }
+
+    .register-header {
+        font-size: 1.5em;
+    }
+}
+
+
+.login-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    background-color: #3fb2d8;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+  }
+
+h1.login-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+/* Style for messages */
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.messages li {
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.messages .success {
+    background-color: white;
+    color: #048822;
+    border: 1px solid #c3e6cb;
+}
+
+.messages .error {
+    background-color: white;
+    color: #e40a0a;
+    border: 1px solid #46282b;
+}
+
+
+
+.navigation .user-logout {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.emoji {
+    background: none;
+    border: none;
+    color: none;
+    cursor: pointer;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+    font-size: 1.3em; /* Adjust this value to change the size of the emoji */
+}
+
+.emoji:hover {
+    background-color: #366b8c;
+    border-radius: 8px; /* Adjust this value for hover radius */
+}
+
+
+
+.user-logout{
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.user-logout::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: white;
+    transform-origin: right;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.logout:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+
+
+
+/* General styles for the section */
+.new-post-form {
+    width: 100%;
+    max-width: 500px; /* Increased max-width for larger form */
+    margin: 10px auto; /* Center the section and add top margin */
+    padding: 20px; /* Increased padding */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Slightly increased box-shadow */
+    background-color: #14a6ee;
+    border-radius: 8px; /* Increased border-radius */
+}
+
+
+
+
+/* Styles for the heading */
+.new-post {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+}
+
+/* General form styles */
+.form-with-validation {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles for form elements */
+.form-with-validation input[type="text"],
+.form-with-validation input[type="email"],
+.form-with-validation input[type="password"],
+.form-with-validation textarea,
+.form-with-validation select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Styles for the form button */
+.form-submit {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-submit:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Update and Delete button */
+/* Common styles for both buttons */
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Styles for the Update button */
+.update-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+/* Styles for the Delete button */
+.delete-button {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #da190b;
+}
+
+
+
+
+
+
+
+/* General container for the edit post form */
+.edit-post-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+  }
+  
+  /* Title of the edit post form */
+  .edit-post-title {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form styling */
+  .edit-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Styles for buttons */
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    opacity: 0.8;
+  }
+
+  
+  
+
+
+
+
+/* General container for the delete post confirmation */
+.delete-post-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+  }
+  
+  /* Title of the delete post confirmation */
+  .delete-post-title {
+    color: #dc3545;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Message in the delete post confirmation */
+  .delete-post-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form in the delete post confirmation */
+  .delete-post-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Styles for buttons */
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-danger:hover,
+  .btn-secondary:hover {
+    opacity: 0.8;
+  }
+  
+
+
+
+
+
+  /* Profile page */
+
+.profile-container {
+    background: #3792ae;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.text-email {
+    font-size: 16px;
+    color: white;
+}
+.form-with-validation {
+    background: #3792ae;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-submit {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-submit:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* this is author name and profile in post_page */
+
+.post-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.author-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.author-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+/* Container div styling */
+
+/* div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+} */
+/* Like button styling */
+#like-button {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#like-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Like button icon styling */
+#like-button i {
+    margin-right: 8px;
+}
+
+/* Likes count styling */
+#likes-count {
+    font-size: 16px;
+    color: #555555;
+    margin-left: 10px;
+}

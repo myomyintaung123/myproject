@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8 mt-2">
+        <div class="profile-container">
+            <div class="profile-image-container">
+                <h2 class="account-heading">{{ user.username|capfirst }}'s Profile</h2>
+                <img class="profile-image" src="{{ user.profile.image.url }}" alt="{{ user.username }}'s profile picture"/>
+            </div>
+            <div class="media-body">
+                <p class="text-email">{{ user.email }}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    
+    {% if request.user == user %}
+    <div class="col-md-8 mt-2">
+        <form class="form-with-validation" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-2 text-center"><strong>Profile Info</strong></legend>
+                {{ u_form.as_p }}
+                {{ p_form.as_p }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
